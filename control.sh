@@ -98,10 +98,10 @@ check_py() {
     if [ ! -e "${G_ROOT_DIR}/venv" ]; then
         # pip install --upgrade pip
         # pip install virtualenv
-        virtualenv --no-site-packages ${G_VENV_DIR}
+        virtualenv ${G_VENV_DIR}
     fi
     source ${G_VENV_DIR}/bin/activate
-    pip install -r ${G_API_DIR}/requirements.txt
+    pip install --force-reinstall -r ${G_API_DIR}/requirements.txt
     if [ ! -e ${G_VENV_DIR}/bin/curve_uwsgi ]; then
         cd ${G_VENV_DIR}/bin
         ln -s uwsgi curve_uwsgi
